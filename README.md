@@ -89,6 +89,3 @@ Dependencies: [`eframe`/`egui`](https://github.com/emilk/egui) for the window, [
 
 StepMania and osu! are trademarks of their respective owners; this project is not affiliated with either. Only convert charts and audio you have the right to use.
 
-## License
-
-Add a license of your choice (for example MIT) before publishing.
