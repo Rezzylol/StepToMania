@@ -60,31 +60,6 @@ The first build takes several minutes because the GUI library is large. After th
 
 **Windows:** the included `.cargo/config.toml` links the C runtime statically, so the `.exe` runs on any PC without installing the Visual C++ Redistributable. The release `.exe` is a single file you can give to anyone.
 
-### Building with GitHub Actions
-
-If you don't want to install Rust, put the following in `.github/workflows/build.yml` and push the project to GitHub. Each run produces downloadable Windows, macOS and Linux builds under the run's **Artifacts**.
-
-```yaml
-name: build
-on: [push, workflow_dispatch]
-jobs:
-  build:
-    strategy:
-      matrix: { os: [windows-latest, macos-latest, ubuntu-latest] }
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev
-      - run: cargo build --release
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sm2osz-${{ matrix.os }}
-          path: |
-            target/release/sm2osz
-            target/release/sm2osz.exe
-```
 
 ## Troubleshooting
 
